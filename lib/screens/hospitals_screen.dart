@@ -1,9 +1,11 @@
+import 'dart:async';
+
 import 'package:donate_life/dummy_data.dart';
-import 'package:donate_life/models/Hospital.dart';
+import 'package:donate_life/widgets/add_hospital.dart';
 import 'package:donate_life/widgets/hospital_card.dart';
 import 'package:flutter/material.dart';
+import 'package:donate_life/models/Hospital.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'dart:async';
 
 class HospitalsPage extends StatefulWidget {
   @override
@@ -11,7 +13,7 @@ class HospitalsPage extends StatefulWidget {
 }
 
 class _HospitalsPageState extends State<HospitalsPage> {
-  final List<Hospital> hospitals = DUMMY_HOSPITALS;
+  List<Hospital> hospitals = List.from(DUMMY_HOSPITALS);
   Completer<GoogleMapController> _controller = Completer();
   Hospital? selectedHospital;
 
@@ -39,6 +41,31 @@ class _HospitalsPageState extends State<HospitalsPage> {
         infoWindow: InfoWindow(title: hospital.name),
       );
     }).toSet();
+  }
+
+  //Create a function to add a new hospital
+  void _addNewHospital(Hospital newHospital) {
+    setState(() {
+      hospitals = [...hospitals, newHospital];
+    });
+  }
+
+  void _removeHospital(Hospital hospitalToRemove) {
+    setState(() {
+      hospitals.removeWhere((hospital) => hospital.id == hospitalToRemove.id);
+    });
+  }
+
+  //Show the input form when the floating action button is pressed
+  void _showAddHospitalForm() {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return HospitalForm(
+          onSave: _addNewHospital,
+        );
+      },
+    );
   }
 
   @override
@@ -83,11 +110,17 @@ class _HospitalsPageState extends State<HospitalsPage> {
                     });
                     _moveToSelectedHospital();
                   },
+                  onDelete: _removeHospital,
                 );
               },
             ),
           ),
         ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: _showAddHospitalForm,
+        child: Icon(Icons.add),
+        backgroundColor: Color.fromARGB(255, 184, 11, 11),
       ),
     );
   }

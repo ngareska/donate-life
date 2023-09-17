@@ -4,7 +4,7 @@ class Hospital {
   final String id;
   final String name;
   final String nameLocation;
-  final List<String> bloodtypes;
+  final String bloodtype;
   final String phoneNumber;
   final Location location;
 
@@ -12,7 +12,7 @@ class Hospital {
       {required this.id,
       required this.name,
       required this.nameLocation,
-      required this.bloodtypes,
+      required this.bloodtype,
       required this.phoneNumber,
       required this.location});
 }

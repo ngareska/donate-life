@@ -6,7 +6,7 @@ const DUMMY_HOSPITALS = const [
     id: 'h1',
     name: 'Аџибадем Систина',
     nameLocation: 'Скопје',
-    bloodtypes: ['A-'],
+    bloodtype: 'A-',
     phoneNumber: '02 309 9500',
     location: Location(
       latitude: 42.0140,
@@ -17,7 +17,7 @@ const DUMMY_HOSPITALS = const [
     id: 'h2',
     name: 'Градска болница 8-ми септември',
     nameLocation: 'Скопје',
-    bloodtypes: ['O-'],
+    bloodtype: 'O-',
     phoneNumber: '02 308 7400',
     location: Location(
       latitude: 42.0056838095,

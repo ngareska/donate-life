@@ -5,7 +5,10 @@ class ConfirmationPage extends StatelessWidget {
   final String hospitalName;
   final String bloodType;
 
-  ConfirmationPage({required this.hospitalName, required this.bloodType});
+  ConfirmationPage({
+    required this.hospitalName,
+    required this.bloodType,
+  });
 
   String getCompatibleBloodTypes(String bloodType) {
     if (bloodType == 'A-') {
@@ -54,7 +57,7 @@ class ConfirmationPage extends StatelessWidget {
               height: 10,
             ),
             Text(
-              'Добивте совпаѓање на Вашата и крвната група која е потребна',
+              'Доколку има совпаѓање на Вашата и крвната група која е потребна',
               style: TextStyle(
                 fontSize: 12,
                 color: Color.fromARGB(255, 124, 124, 124),

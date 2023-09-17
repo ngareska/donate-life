@@ -60,7 +60,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
   Future<void> _registerUser() async {
     final url =
-        'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=YOUR_API_KEY';
+        'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBcobkvJIoDRTk7xCm759EgSIYQpiqHFIA';
 
     try {
       final response = await http.post(
