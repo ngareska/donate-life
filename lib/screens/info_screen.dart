@@ -1,10 +1,11 @@
-import 'package:donate_life/login_screen.dart';
+import 'package:donate_life/screens/login_screen.dart';
 import 'package:flutter/material.dart';
 
-class HomeScreen extends StatelessWidget {
+class InfoPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: true,
       backgroundColor: Colors.white,
       body: Center(
         child: Column(
@@ -34,7 +35,7 @@ class HomeScreen extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (_) => NextScreen()),
+                  MaterialPageRoute(builder: (_) => LoginScreen()),
                 );
               },
               style: ButtonStyle(

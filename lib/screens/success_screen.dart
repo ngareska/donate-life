@@ -1,7 +1,7 @@
-import 'package:donate_life/home_screen.dart';
+import 'package:donate_life/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 
-class SuccessScreen extends StatelessWidget {
+class SuccessPage extends StatelessWidget {
     final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
   @override

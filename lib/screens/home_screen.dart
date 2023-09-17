@@ -1,7 +1,21 @@
-import 'package:donate_life/hospitals_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:donate_life/screens/hospitals_screen.dart';
 
 class HomePage extends StatelessWidget {
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+
+  void _handleLogout(BuildContext context) async {
+    try {
+      await _auth.signOut(); // Sign out the user
+      Navigator.of(context).pop(); // Close the drawer
+      Navigator.of(context).pushReplacementNamed('login_screen');
+    } catch (e) {
+      // Handle any errors during logout
+      print('Logout failed: $e');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -13,7 +27,13 @@ class HomePage extends StatelessWidget {
       ),
       drawer: Drawer(
         child: ListView(
-          children: <Widget>[],
+          children: <Widget>[
+            ListTile(
+              leading: Icon(Icons.logout), // Add your logout icon
+              title: Text('Одјави се'),
+              onTap: () => _handleLogout(context), // Call the logout function
+            ),
+          ],
         ),
       ),
       body: Center(
@@ -26,7 +46,7 @@ class HomePage extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (_) => HospitalsScreen()),
+                  MaterialPageRoute(builder: (_) => HospitalsPage()),
                 );
               },
               style: ButtonStyle(

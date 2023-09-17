@@ -1,5 +1,6 @@
-import 'package:donate_life/models/blood_types.dart';
+import 'package:donate_life/widgets/blood_type_tile.dart';
 import 'package:flutter/material.dart';
+import 'package:donate_life/models/blood_types.dart';
 
 class BloodTypeSelection extends StatelessWidget {
   @override
@@ -32,7 +33,8 @@ class BloodTypeSelection extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Column(
-                  children: BloodTypes.bloodTypes.sublist(0, 4).map((bloodType) {
+                  children:
+                      BloodTypes.bloodTypes.sublist(0, 4).map((bloodType) {
                     return Padding(
                       padding: const EdgeInsets.all(10),
                       child: BloodTypeTile(bloodType: bloodType),
@@ -51,54 +53,6 @@ class BloodTypeSelection extends StatelessWidget {
               ],
             ),
           ],
-        ),
-      ),
-    );
-  }
-}
-
-class BloodTypeTile extends StatefulWidget {
-  final String bloodType;
-
-  const BloodTypeTile({Key? key, required this.bloodType}) : super(key: key);
-
-  @override
-  _BloodTypeTileState createState() => _BloodTypeTileState();
-}
-
-class _BloodTypeTileState extends State<BloodTypeTile> {
-  bool isSelected = false;
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        setState(() {
-          isSelected = !isSelected;
-        });
-        Navigator.pop(context, isSelected ? widget.bloodType : null);
-      },
-      child: Container(
-        width: 120,
-        height: 120,
-        decoration: BoxDecoration(
-          shape: BoxShape.circle,
-          border: Border.all(
-            color: Color.fromARGB(255, 184, 11, 11),
-            width: 3,
-          ),
-          color: isSelected ? Color.fromARGB(255, 184, 11, 11) : Colors.white,
-        ),
-        child: Center(
-          child: Text(
-            widget.bloodType,
-            style: TextStyle(
-              fontSize: 40,
-              fontWeight: FontWeight.bold,
-              color:
-                  isSelected ? Colors.white : Color.fromARGB(255, 184, 11, 11),
-            ),
-          ),
         ),
       ),
     );

@@ -1,11 +1,11 @@
-import 'package:donate_life/success_screen.dart';
+import 'package:donate_life/screens/success_screen.dart';
 import 'package:flutter/material.dart';
 
-class ConfirmationScreen extends StatelessWidget {
+class ConfirmationPage extends StatelessWidget {
   final String hospitalName;
   final String bloodType;
 
-  ConfirmationScreen({required this.hospitalName, required this.bloodType});
+  ConfirmationPage({required this.hospitalName, required this.bloodType});
 
   String getCompatibleBloodTypes(String bloodType) {
     if (bloodType == 'A-') {
@@ -132,7 +132,7 @@ class ConfirmationScreen extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => SuccessScreen()),
+                  MaterialPageRoute(builder: (context) => SuccessPage()),
                 );
               },
               style: ElevatedButton.styleFrom(
