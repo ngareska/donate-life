@@ -29,9 +29,14 @@ class HomePage extends StatelessWidget {
         child: ListView(
           children: <Widget>[
             ListTile(
-              leading: Icon(Icons.logout), // Add your logout icon
-              title: Text('Одјави се'),
-              onTap: () => _handleLogout(context), // Call the logout function
+              leading: Icon(Icons.logout_sharp), 
+              title: Text(
+                'Одјава',
+                style: TextStyle(
+                  fontSize: 18,
+                ),
+              ),
+              onTap: () => _handleLogout(context),
             ),
           ],
         ),

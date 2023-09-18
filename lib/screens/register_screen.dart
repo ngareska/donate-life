@@ -1,4 +1,5 @@
 import 'package:donate_life/screens/blood_type_screen.dart';
+import 'package:donate_life/screens/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -80,7 +81,7 @@ class _RegisterPageState extends State<RegisterPage> {
       if (response.statusCode == 200) {
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (_) => HomePage()),
+          MaterialPageRoute(builder: (_) => LoginScreen()),
         );
       } else {
         final Map<String, dynamic> responseData = json.decode(response.body);

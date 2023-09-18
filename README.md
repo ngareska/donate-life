@@ -1,6 +1,6 @@
-# donate_life
+# Донирај живот
 
-A new Flutter project.
+Kрос-платформска мобилна апликација
 
 ## Getting Started
 

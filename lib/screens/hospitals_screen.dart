@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:donate_life/dummy_data.dart';
+import 'package:donate_life/models/blood_types.dart';
 import 'package:donate_life/widgets/add_hospital.dart';
 import 'package:donate_life/widgets/hospital_card.dart';
 import 'package:flutter/material.dart';
@@ -26,7 +27,7 @@ class _HospitalsPageState extends State<HospitalsPage> {
             selectedHospital!.location.latitude,
             selectedHospital!.location.longitude,
           ),
-          15.0,
+          17.0,
         ),
       );
     }
@@ -63,6 +64,7 @@ class _HospitalsPageState extends State<HospitalsPage> {
       builder: (context) {
         return HospitalForm(
           onSave: _addNewHospital,
+          bloodTypes: BloodTypes.bloodTypes
         );
       },
     );

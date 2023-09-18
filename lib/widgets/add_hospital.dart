@@ -1,11 +1,12 @@
+import 'package:flutter/material.dart';
 import 'package:donate_life/models/Hospital.dart';
 import 'package:donate_life/models/location.dart';
-import 'package:flutter/material.dart';
 
 class HospitalForm extends StatefulWidget {
   final Function(Hospital) onSave;
+  final List<String> bloodTypes;
 
-  HospitalForm({required this.onSave});
+  HospitalForm({required this.onSave, required this.bloodTypes});
 
   @override
   _HospitalFormState createState() => _HospitalFormState();
@@ -18,14 +19,18 @@ class _HospitalFormState extends State<HospitalForm> {
   final TextEditingController latitudeController = TextEditingController();
   final TextEditingController longitudeController = TextEditingController();
 
-  String selectedBloodType = 'A-'; // Default value for blood type
+  late String selectedBloodType; 
 
-  final List<String> bloodTypes = ['A-', 'A+', 'B-', 'B+', 'O-', 'O+', 'AB-', 'AB+'];
+  @override
+  void initState() {
+    super.initState();
+    selectedBloodType = widget.bloodTypes[0]; 
+  }
 
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: Center(child: Text('Додади нова болница')), // Center align the title
+      title: Center(child: Text('Додади нова болница')),
       content: SingleChildScrollView(
         child: Column(
           children: [
@@ -45,7 +50,7 @@ class _HospitalFormState extends State<HospitalForm> {
                   selectedBloodType = newValue.toString();
                 });
               },
-              items: bloodTypes.map<DropdownMenuItem<String>>((String value) {
+              items: widget.bloodTypes.map<DropdownMenuItem<String>>((String value) {
                 return DropdownMenuItem<String>(
                   value: value,
                   child: Text(value),
@@ -73,10 +78,10 @@ class _HospitalFormState extends State<HospitalForm> {
             Navigator.of(context).pop();
           },
           child: Text(
-            'Излези',
+            'Назад',
             style: TextStyle(
                 color: Color.fromARGB(
-                    255, 184, 11, 11)), // Set the text color to red
+                    255, 184, 11, 11)),
           ),
         ),
         TextButton(
@@ -101,7 +106,7 @@ class _HospitalFormState extends State<HospitalForm> {
             'Зачувај',
             style: TextStyle(
                 color: Color.fromARGB(
-                    255, 184, 11, 11)), // Set the text color to red
+                    255, 184, 11, 11)),
           ),
         ),
       ],
