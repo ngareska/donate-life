@@ -78,7 +78,7 @@ class _HospitalFormState extends State<HospitalForm> {
             Navigator.of(context).pop();
           },
           child: Text(
-            'Назад',
+            'Откажи',
             style: TextStyle(
                 color: Color.fromARGB(
                     255, 184, 11, 11)),

@@ -57,16 +57,16 @@ class ConfirmationPage extends StatelessWidget {
               height: 10,
             ),
             Text(
-              'Доколку има совпаѓање на Вашата и крвната група која е потребна',
+              'Доколку Вашата крвна група се совпаѓа со компатибилната на потребната',
               style: TextStyle(
-                fontSize: 12,
+                fontSize: 11,
                 color: Color.fromARGB(255, 124, 124, 124),
               ),
             ),
             Text(
               'Ве молиме кликнете потврди за да донирате',
               style: TextStyle(
-                fontSize: 12,
+                fontSize: 13,
                 color: Color.fromARGB(255, 124, 124, 124),
               ),
             ),

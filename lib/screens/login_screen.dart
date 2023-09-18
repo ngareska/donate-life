@@ -1,4 +1,5 @@
 import 'package:donate_life/widgets/login_input.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -8,6 +9,64 @@ import 'package:donate_life/screens/register_screen.dart';
 class LoginScreen extends StatelessWidget {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+
+  Future<void> _resetPassword(BuildContext context) async {
+    final email = await showDialog(
+      context: context,
+      builder: (context) {
+        final emailController = TextEditingController();
+        return AlertDialog(
+          title: Text('Заборавена лозинка'),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              TextField(
+                controller: emailController,
+                decoration: InputDecoration(labelText: 'Е-mail'),
+              ),
+            ],
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text(
+                'Откажи',
+                style: TextStyle(color: Color.fromARGB(255, 184, 11, 11)),
+              ),
+            ),
+            TextButton(
+              onPressed: () async {
+                final email = emailController.text;
+                try {
+                  await FirebaseAuth.instance
+                      .sendPasswordResetEmail(email: email);
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content:
+                          Text('Линкот за промена на лозинка е успешно испратен до Вашата е-mail адреса.'),
+                    ),
+                  );
+                } catch (e) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text('Неуспешно испраќање на линкот до Вашата е-mail адреса'),
+                    ),
+                  );
+                }
+                Navigator.of(context).pop();
+              },
+              child: Text(
+                'Испрати',
+                style: TextStyle(color: Color.fromARGB(255, 184, 11, 11)),
+              ),
+            ),
+          ],
+        );
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +78,7 @@ class LoginScreen extends StatelessWidget {
             _buildHeader(),
             _buildEmailInput(),
             _buildPasswordInput(),
-            _buildForgotPasswordText(),
+            _buildForgotPasswordText(context),
             SizedBox(height: 20),
             _buildLoginButton(context),
             SizedBox(height: 13),
@@ -75,15 +134,12 @@ class LoginScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildForgotPasswordText() {
+  Widget _buildForgotPasswordText(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(right: 212),
       child: TextButton(
         onPressed: () {
-          // Navigator.push(
-          //   context,
-          //   MaterialPageRoute(builder: (_) => ChangePasswordScreen()),
-          // );
+          _resetPassword(context);
         },
         child: Text(
           'Заборавена лозинка?',
@@ -108,7 +164,7 @@ class LoginScreen extends StatelessWidget {
       child: TextButton(
         onPressed: () async {
           final url =
-              'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBcobkvJIoDRTk7xCm759EgSIYQpiqHFIA'; 
+              'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBcobkvJIoDRTk7xCm759EgSIYQpiqHFIA';
           final response = await http.post(
             Uri.parse(url),
             body: json.encode({
