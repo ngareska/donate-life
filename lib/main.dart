@@ -23,7 +23,7 @@ class _MyAppState extends State<MyApp> {
   void initState() {
     super.initState();
     Timer(
-      Duration(seconds: 8),
+      Duration(seconds: 10),
       () => navigatorKey.currentState?.pushReplacement(
         MaterialPageRoute(builder: (BuildContext context) => InfoPage()),
       ),
@@ -33,6 +33,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       navigatorKey: navigatorKey,
       initialRoute: '/', 
       routes: {
