@@ -23,15 +23,15 @@ To work with the Donate Life application in Android Studio, follow these steps:
 
 ## Main Screens and Widgets
 
-![Screenshot](assets/images/1.png)
-![Screenshot](assets/images/2.png)
+<img src="assets/images/1.png" width="200">
+<img src="assets/images/2.png" width="200">
 
 ### Home Page
 - Features an app bar with the title "Донирај живот" (Donate Life).
 - Offers a side drawer with an icon for logging out.
 - Contains a hospital image and a search button for finding hospitals.
 
-![Screenshot](assets/images/5.png)
+<img src="assets/images/5.png" width="200">
 
 
 ### Hospitals Page
@@ -39,36 +39,39 @@ To work with the Donate Life application in Android Studio, follow these steps:
 - Provides functionality to view details, search for hospitals on the map, add new hospitals, and remove existing ones.
 - Includes a floating action button to add new hospitals.
 
-![Screenshot](assets/images/6.png)
+<img src="assets/images/6.png" width="200">
+<img src="assets/images/6.1.png" width="200">
+
 
 
 ### Confirmation Page
 - Shows details of the selected hospital and the required blood type.
 - Helps users confirm their blood compatibility with the requested blood type.
 
-![Screenshot](assets/images/7.png)
+<img src="assets/images/7.png" width="200">
 
 ### Success Page
 - Displays a success message after a successful donation.
 
-![Screenshot](assets/images/8.png)
+<img src="assets/images/8.png" width="200">
+
 
 ### Login Screen
 - Allows users to log in with their email and password.
 - Features an option to reset a forgotten password.
 - Provides a registration option for new users.
 
-![Screenshot](assets/images/3.png)
+<img src="assets/images/3.png" width="200">
 
 ### Registration Page
 - Enables user registration with personal information such as first name, last name, password, date of birth, blood type, email, and phone number.
 - Utilizes a calendar for date of birth selection.
 - Redirects to the BloodTypeSelection screen for blood type selection.
 
-![Screenshot](assets/images/4.png)
+<img src="assets/images/4.png" width="200">
 
 
 ### BloodTypeSelection
 - Allows users to select their blood type from available options.
 
-![Screenshot](assets/images/4.1.png)
+<img src="assets/images/4.1.png" width="200">
